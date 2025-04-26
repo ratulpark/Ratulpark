@@ -1,35 +1,32 @@
-// Basic fake "phoneme" rules (very simplified for English)
-const phonemeMap = {
-  A: "AH", E: "EE", I: "IH", O: "OH", U: "UH",
-  B: "B", C: "K", D: "D", F: "F", G: "G", H: "H",
-  J: "JH", K: "K", L: "L", M: "M", N: "N",
-  P: "P", Q: "K", R: "R", S: "S", T: "T",
-  V: "V", W: "W", X: "KS", Y: "Y", Z: "Z",
-  CH: "CH", SH: "SH", TH: "TH", PH: "F", NG: "NG"
-};
+function convertToPhonemes() {
+  const text = document.getElementById('textInput').value.toLowerCase();
+  let phonemes = '';
 
-function generatePhonemes() {
-  const input = document.getElementById('textInput').value.toUpperCase();
-  const outputDiv = document.getElementById('output');
-  let phonemes = [];
-
-  let i = 0;
-  while (i < input.length) {
-    // Try to match two-letter phonemes first (e.g., CH, SH, TH, PH, NG)
-    const twoLetters = input.substring(i, i+2);
-    if (phonemeMap[twoLetters]) {
-      phonemes.push(phonemeMap[twoLetters]);
-      i += 2;
-      continue;
+  for (let char of text) {
+    if ('aei'.includes(char)) {
+      phonemes += 'A ';
+    } else if ('bmp'.includes(char)) {
+      phonemes += 'BMP ';
+    } else if ('fv'.includes(char)) {
+      phonemes += 'FV ';
+    } else if ('cdgkrstxyz'.includes(char)) {
+      phonemes += 'CDGK_RST_XYZ ';
+    } else if ('u'.includes(char)) {
+      phonemes += 'U ';
+    } else if ('chjsh'.includes(char)) {
+      phonemes += 'CHJSH ';
+    } else if ('l'.includes(char)) {
+      phonemes += 'L ';
+    } else if ('o'.includes(char)) {
+      phonemes += 'O ';
+    } else if ('qw'.includes(char)) {
+      phonemes += 'QW ';
+    } else if (char === ' ') {
+      phonemes += '| '; // space between words
+    } else {
+      phonemes += char + ' '; // unknown characters
     }
-
-    // Then match one-letter phonemes
-    const oneLetter = input[i];
-    if (phonemeMap[oneLetter]) {
-      phonemes.push(phonemeMap[oneLetter]);
-    }
-    i++;
   }
 
-  outputDiv.innerHTML = "<h3>Phoneme Output:</h3> " + phonemes.join(' ➔ ');
+  document.getElementById('output').innerText = phonemes.trim();
 }
