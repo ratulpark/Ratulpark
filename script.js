@@ -22,9 +22,12 @@ function convertToPhonemes() {
     } else if ('qw'.includes(char)) {
       phonemes += 'QW ';
     } else {
-      phonemes += char + ' '; // Leave unknown characters as is
+      phonemes += char + ' ';
     }
   }
 
   document.getElementById('output').innerText = phonemes.trim();
 }
+
+// Add event listener properly:
+document.getElementById('convertButton').addEventListener('click', convertToPhonemes);
