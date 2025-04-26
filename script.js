@@ -1,33 +1,56 @@
+// Simple mapping of letters to phonemes for demonstration purposes
+const phonemeMap = {
+    "A": "AH",
+    "B": "B",
+    "C": "K",
+    "D": "D",
+    "E": "EH",
+    "F": "F",
+    "G": "G",
+    "H": "HH",
+    "I": "IH",
+    "J": "J",
+    "K": "K",
+    "L": "L",
+    "M": "M",
+    "N": "N",
+    "O": "OW",
+    "P": "P",
+    "Q": "KW",
+    "R": "R",
+    "S": "S",
+    "T": "T",
+    "U": "UW",
+    "V": "V",
+    "W": "W",
+    "X": "KS",
+    "Y": "Y",
+    "Z": "Z",
+    "SH": "SH",
+    "CH": "CH"
+};
+
 function convertToPhonemes() {
-  const text = document.getElementById('textInput').value.toLowerCase();
-  let phonemes = '';
+    const inputText = document.getElementById("inputText").value.trim().toLowerCase();
+    const words = inputText.split(" ");  // Split text into words
+    let outputText = 'Phenomes:\n';  // Start with the "Phenomes:" label
 
-  for (let char of text) {
-    if ('aei'.includes(char)) {
-      phonemes += 'A ';
-    } else if ('bmp'.includes(char)) {
-      phonemes += 'BMP ';
-    } else if ('fv'.includes(char)) {
-      phonemes += 'FV ';
-    } else if ('cdgkrstxyz'.includes(char)) {
-      phonemes += 'CDGK ';
-    } else if ('u'.includes(char)) {
-      phonemes += 'U ';
-    } else if ('chjsh'.includes(char)) {
-      phonemes += 'CHJSH ';
-    } else if ('l'.includes(char)) {
-      phonemes += 'L ';
-    } else if ('o'.includes(char)) {
-      phonemes += 'O ';
-    } else if ('qw'.includes(char)) {
-      phonemes += 'QW ';
-    } else {
-      phonemes += char + ' ';
-    }
-  }
+    words.forEach(word => {
+        let phonemes = [];
 
-  document.getElementById('output').innerText = phonemes.trim();
+        // For each word, convert it into phonemes
+        for (let i = 0; i < word.length; i++) {
+            const letter = word[i].toUpperCase();  // Capitalize letter for matching in phonemeMap
+            if (phonemeMap[letter]) {
+                phonemes.push(phonemeMap[letter]);
+            } else {
+                phonemes.push(letter);  // If no phoneme mapping, just add the letter (e.g., non-alphabetic characters)
+            }
+        }
+
+        outputText += `${word.charAt(0).toUpperCase() + word.slice(1)}: ${phonemes.join(', ')}\n`;  // Add formatted word and phonemes
+    });
+
+    // Display the result in the output section
+    document.getElementById("phonemeOutput").textContent = outputText;
 }
-
-// Add event listener properly:
-document.getElementById('convertButton').addEventListener('click', convertToPhonemes);
