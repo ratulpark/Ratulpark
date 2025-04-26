@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Text to Phoneme Editor</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Phoneme Editor</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>South Park Visemes</h2>
-    <textarea id="textInput" placeholder="Type your text here..."></textarea><br>
-    <button id="convertButton">Convert</button>
-    <p id="output"></p>
-  </div>
-
-  <script src="script.js"></script>
+    <div class="container">
+        <h1>Text to Phoneme Editor</h1>
+        <textarea id="inputText" placeholder="Enter text here..."></textarea>
+        <button onclick="convertToPhonemes()">Convert</button>
+        <div id="output">
+            <h2>Phenomes:</h2>
+            <pre id="phonemeOutput"></pre>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
