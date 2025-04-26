@@ -1,56 +1,38 @@
-// Simple mapping of letters to phonemes for demonstration purposes
+// Example phoneme map (replace with your actual logic or mapping)
 const phonemeMap = {
-    "A": "AH",
-    "B": "B",
-    "C": "K",
-    "D": "D",
-    "E": "EH",
-    "F": "F",
-    "G": "G",
-    "H": "HH",
-    "I": "IH",
-    "J": "J",
-    "K": "K",
-    "L": "L",
-    "M": "M",
-    "N": "N",
-    "O": "OW",
-    "P": "P",
-    "Q": "KW",
-    "R": "R",
-    "S": "S",
-    "T": "T",
-    "U": "UW",
-    "V": "V",
-    "W": "W",
-    "X": "KS",
-    "Y": "Y",
-    "Z": "Z",
-    "SH": "SH",
-    "CH": "CH"
+  "a": "A",
+  "b": "B",
+  "c": "C",
+  "d": "D",
+  "e": "E",
+  "f": "F",
+  "g": "G",
+  "h": "H",
+  "i": "I",
+  "j": "J",
+  "k": "K",
+  "l": "L",
+  "m": "M",
+  "n": "N",
+  "o": "O",
+  "p": "P",
+  "q": "Q",
+  "r": "R",
+  "s": "S",
+  "t": "T",
+  "u": "U",
+  "v": "V",
+  "w": "W",
+  "x": "X",
+  "y": "Y",
+  "z": "Z",
 };
 
-function convertToPhonemes() {
-    const inputText = document.getElementById("inputText").value.trim().toLowerCase();
-    const words = inputText.split(" ");  // Split text into words
-    let outputText = 'Phenomes:\n';  // Start with the "Phenomes:" label
+// Function to convert text to phonemes
+function convertText() {
+  const inputText = document.getElementById("inputText").value;
+  const words = inputText.split(" ");
+  let phonemeOutput = "";
 
-    words.forEach(word => {
-        let phonemes = [];
-
-        // For each word, convert it into phonemes
-        for (let i = 0; i < word.length; i++) {
-            const letter = word[i].toUpperCase();  // Capitalize letter for matching in phonemeMap
-            if (phonemeMap[letter]) {
-                phonemes.push(phonemeMap[letter]);
-            } else {
-                phonemes.push(letter);  // If no phoneme mapping, just add the letter (e.g., non-alphabetic characters)
-            }
-        }
-
-        outputText += `${word.charAt(0).toUpperCase() + word.slice(1)}: ${phonemes.join(', ')}\n`;  // Add formatted word and phonemes
-    });
-
-    // Display the result in the output section
-    document.getElementById("phonemeOutput").textContent = outputText;
-}
+  words.forEach(word => {
+    const phonemes = word.split("").map(char => phonemeMap
