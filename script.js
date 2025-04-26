@@ -10,7 +10,7 @@ function convertToPhonemes() {
     } else if ('fv'.includes(char)) {
       phonemes += 'FV ';
     } else if ('cdgkrstxyz'.includes(char)) {
-      phonemes += 'CDGK_RST_XYZ ';
+      phonemes += 'CDGK ';
     } else if ('u'.includes(char)) {
       phonemes += 'U ';
     } else if ('chjsh'.includes(char)) {
@@ -21,10 +21,8 @@ function convertToPhonemes() {
       phonemes += 'O ';
     } else if ('qw'.includes(char)) {
       phonemes += 'QW ';
-    } else if (char === ' ') {
-      phonemes += '| '; // space between words
     } else {
-      phonemes += char + ' '; // unknown characters
+      phonemes += char + ' '; // Leave unknown characters as is
     }
   }
 
