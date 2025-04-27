@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text to Phoneme Converter</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Phonemes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h2>Text to Phoneme Converter</h2>
-    
-    <label for="inputText">Enter text:</label>
-    <textarea id="inputText" rows="4" cols="50"></textarea>
-    
-    <button onclick="convertText()">Convert</button>
-    
-    <!-- Separate output box -->
-    <div class="outputBox" id="outputBox">
-      <h3>Phonemes:</h3>
-      <p id="phonemeOutput"></p>
-    </div>
-  </div>
+    <div class="container">
+        <h1>Text to Phonemes Converter</h1>
 
-  <script src="script.js"></script>
+        <textarea id="inputText" placeholder="Enter text here"></textarea>
+        
+        <button id="convertButton">Convert</button>
+
+        <div id="output" class="output-box">
+            <!-- The phonemes output will appear here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
